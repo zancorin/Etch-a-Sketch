@@ -3,7 +3,9 @@
 const body = document.body;
 let gridContainer = document.querySelector(".gridContainer");
 let gridSize = 16;
+let fakeKnobs = document.querySelector(".fakeKnobs");
 CreateGrid(gridSize);
+
 
 function CreateGrid(num)
 {
@@ -20,6 +22,7 @@ function CreateGrid(num)
             });
             row.appendChild(gridSquare);
             gridContainer.appendChild(row);
+            fakeKnobs.setAttribute('style', `gap: ${num*10}px;`);
         }
     }
 }
