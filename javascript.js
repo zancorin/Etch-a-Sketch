@@ -1,7 +1,7 @@
 //Create a 16x16 grid of divs
 
 const body = document.body;
-gridContainer = document.querySelector(".gridContainer");
+let gridContainer = document.querySelector(".gridContainer");
 
 CreateGrid(16);
 
@@ -19,4 +19,30 @@ function CreateGrid(num)
             gridContainer.appendChild(row);
         }
     }
+}
+
+
+const btnNewGrid = document.querySelector("#btnNewGrid");
+btnNewGrid.addEventListener('click', () => 
+{
+    DeleteGrid();
+    //CreateGrid(50);
+}
+)
+
+function DeleteGrid()
+{
+   // allSquares = document.querySelectorAll(".gridSquare");
+    allRows = document.querySelectorAll(".row");
+    /*
+    allSquares.forEach((square) =>{
+        console.log("delete square");
+        square.remove();
+     });*/
+    allRows.forEach((row) => {
+        row.remove();
+     });
+
+
+
 }
