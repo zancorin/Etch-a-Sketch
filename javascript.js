@@ -2,8 +2,8 @@
 
 const body = document.body;
 let gridContainer = document.querySelector(".gridContainer");
-
-CreateGrid(16);
+let gridSize = 16;
+CreateGrid(gridSize);
 
 function CreateGrid(num)
 {
@@ -25,8 +25,22 @@ function CreateGrid(num)
 const btnNewGrid = document.querySelector("#btnNewGrid");
 btnNewGrid.addEventListener('click', () => 
 {
+    gridSize = prompt("Enter new grid size");
+    if(gridSize<=0)
+    {
+        gridSize = 0;
+    }
+    else if (gridSize > 100)
+    {
+        gridSize = 100;
+    }
+    else if (isNaN(gridSize))
+    {
+        gridSize = 16;
+    }
+
     DeleteGrid();
-    //CreateGrid(50);
+    CreateGrid(gridSize);
 }
 )
 
