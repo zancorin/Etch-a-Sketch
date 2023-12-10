@@ -15,6 +15,9 @@ function CreateGrid(num)
         {
             const gridSquare = document.createElement("div");
             gridSquare.classList.add("gridSquare");
+            gridSquare.addEventListener('mouseenter', function(e) {
+                e.target.style.background = "black";
+            });
             row.appendChild(gridSquare);
             gridContainer.appendChild(row);
         }
