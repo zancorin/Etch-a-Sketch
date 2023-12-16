@@ -1,4 +1,6 @@
-//Create a 16x16 grid of divs
+//Create a default grid of 16x16 that player can draw through by hovering their mouse over divs
+//Player can click the "Create New Grid button" to input a new size which will erase and recreate a grid
+//Trail effect button and random RGB button
 
 const body = document.body;
 let gameContainer = document.querySelector(".gameContainer");
@@ -10,7 +12,7 @@ let knobLeft = document.querySelector(".knobLeft");
 let knobRight = document.querySelector(".knobRight");
 CreateGrid(gridSize);
 let trailEffect = false;
-let randomizeColors = false;
+let rgbEffect= false;
 
 knobLeft.addEventListener('click', function(e) {
     if(trailEffect === false)
@@ -22,6 +24,25 @@ knobLeft.addEventListener('click', function(e) {
     }
 
     if(trailEffect === true)
+    {
+        e.target.setAttribute('style', `filter: drop-shadow(0 0 1rem #33FF87); invert(1);`);
+    }
+    else{
+        e.target.setAttribute('style', `filter: drop-shadow(0 0 0rem #33FF87); invert(1);`);
+    }
+   
+});
+
+knobRight.addEventListener('click', function(e) {
+    if(rgbEffect === false)
+    {
+        rgbEffect = true;
+    }
+    else {
+        rgbEffect = false;
+    }
+
+    if(rgbEffect === true)
     {
         e.target.setAttribute('style', `filter: drop-shadow(0 0 1rem #33FF87); invert(1);`);
     }
@@ -43,7 +64,16 @@ function CreateGrid(num)
             gridSquare.setAttribute('style', `border: 1px solid red; width:${(450/num) - 2}px;
             height:${(450/num) - 2}px;`);
             gridSquare.addEventListener('mouseenter', function(e) {
+               if(rgbEffect === true)
+               {
+                const randomColor = Math.floor(Math.random()*16777215).toString(16);
+               // document.body.style.backgroundColor = "#" + randomColor;
+                e.target.style.background = '#' + randomColor;
+               } 
+               else
+               {
                 e.target.style.background = "black";
+               }
             });
 
                 gridSquare.addEventListener('mouseleave', function(e) {
