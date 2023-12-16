@@ -17,12 +17,13 @@ function CreateGrid(num)
         {
             const gridSquare = document.createElement("div");
             gridSquare.classList.add("gridSquare");
+            gridSquare.setAttribute('style', `border: 1px solid red; width:${(450/num) - 2}px;
+            height:${(450/num) - 2}px;`);
             gridSquare.addEventListener('mouseenter', function(e) {
                 e.target.style.background = "black";
             });
             row.appendChild(gridSquare);
             gridContainer.appendChild(row);
-            fakeKnobs.setAttribute('style', `gap: ${num*10}px;`);
         }
     }
 }
@@ -34,7 +35,7 @@ btnNewGrid.addEventListener('click', () =>
     gridSize = prompt("Enter new grid size");
     if(gridSize<=0)
     {
-        gridSize = 0;
+        gridSize = 16;
     }
     else if (gridSize > 100)
     {

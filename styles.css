@@ -27,22 +27,17 @@
     background-color: red;
     padding:10px;
     border: solid black 2px;
+    display:flex;
 }
 
 .gridContainer {
+    width:450px;
+    height:450px;
     background-color: orange;
-    padding:4px;
-    display:flex;
-    flex-direction: column;
 }
 
 .row {
     display:flex;
-}
-
-.gridSquare {
-    padding:10px;
-    border: 1px solid red;
 }
 
 .fakeKnobs {
@@ -50,8 +45,8 @@
     background-color: red;
     padding:25px;
     justify-content: flex-start;
-    align-items: flex-start;
-   /* gap:150px;*/
+   
+    gap:350px;
 }
 
 .knobLeft {
