@@ -1,12 +1,35 @@
 //Create a 16x16 grid of divs
 
 const body = document.body;
+let gameContainer = document.querySelector(".gameContainer");
+
 let gridContainer = document.querySelector(".gridContainer");
 let gridSize = 16;
 let fakeKnobs = document.querySelector(".fakeKnobs");
+let knobLeft = document.querySelector(".knobLeft");
+let knobRight = document.querySelector(".knobRight");
 CreateGrid(gridSize);
+let trailEffect = false;
+let randomizeColors = false;
 
+knobLeft.addEventListener('click', function(e) {
+    if(trailEffect === false)
+    {
+        trailEffect = true;
+    }
+    else {
+        trailEffect = false;
+    }
 
+    if(trailEffect === true)
+    {
+        e.target.setAttribute('style', `filter: drop-shadow(0 0 1rem #33FF87); invert(1);`);
+    }
+    else{
+        e.target.setAttribute('style', `filter: drop-shadow(0 0 0rem #33FF87); invert(1);`);
+    }
+   
+});
 function CreateGrid(num)
 {
     for(let j = 0; j < num; j++)
@@ -22,6 +45,20 @@ function CreateGrid(num)
             gridSquare.addEventListener('mouseenter', function(e) {
                 e.target.style.background = "black";
             });
+
+                gridSquare.addEventListener('mouseleave', function(e) {
+                    if(trailEffect === true)
+                    {
+                        setTimeout(function() {
+                            e.target.style.background = "";
+                        }, 500)
+
+                    }
+
+            });
+
+            
+            
             row.appendChild(gridSquare);
             gridContainer.appendChild(row);
         }
